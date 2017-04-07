@@ -16,11 +16,18 @@ class PicturesController < ApplicationController
   end
 
   def update
+    @picture = Picture.find(params[:id])
     if @picture.update_attributes(picture_params)
+      redirect_to "/pictures/#{@picture.id}"
     else
       render :edit
     end
-    
+  end
+
+  def destroy
+    @picture = Picture.find(params[:id])
+    @picture.destroy
+    redirect_to pictures_url
   end
 
   def create
@@ -37,5 +44,4 @@ class PicturesController < ApplicationController
   def picture_params
     params.require(:picture) .permit(:artis, :title, :url)
   end
-
 end
