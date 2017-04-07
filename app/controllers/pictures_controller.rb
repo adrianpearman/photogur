@@ -11,9 +11,17 @@ class PicturesController < ApplicationController
     @picture = Picture.new
   end
 
-  # def create
-  #   render text: "Saving a picture. URL: #{params[:url]}, Title: #{params[:title]}, Artist: #{params[:artist]}"
-  # end
+  def edit
+    @picture = Picture.find(params[:id])
+  end
+
+  def update
+    if @picture.update_attributes(picture_params)
+    else
+      render :edit
+    end
+    
+  end
 
   def create
     @picture = Picture.new(picture_params)
