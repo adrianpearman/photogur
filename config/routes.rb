@@ -4,5 +4,9 @@ end
 
 Rails.application.routes.draw do
   get 'pictures' => 'pictures#index'
-  get 'pictures/:id' => 'pictures#show', as: 'picture'
+
+    post 'pictures' => 'pictures#create' # this is a new line of code
+    get 'pictures/new' => 'pictures#new' # this is also a new line of code
+
+    get 'pictures/:id' => 'pictures#show', as: 'picture'
 end
